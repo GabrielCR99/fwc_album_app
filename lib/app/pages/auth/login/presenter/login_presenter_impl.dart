@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import './login_presenter.dart';
 import '../../../../core/exceptions/unauthorized_exception.dart';
 import '../../../../services/login/login_service.dart';
 import '../view/login_view.dart';
+import 'login_presenter.dart';
 
 class LoginPresenterImpl implements LoginPresenter {
   final LoginService _loginService;

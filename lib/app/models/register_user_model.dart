@@ -11,12 +11,10 @@ class RegisterUserModel {
     required this.passwordConfirmation,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'email': email,
-      'password': password,
-      'password_confirmation': passwordConfirmation,
-    };
-  }
+  Map<String, dynamic> toMap() => {
+        'name': name,
+        'email': email,
+        'password': password,
+        'password_confirmation': passwordConfirmation,
+      };
 }

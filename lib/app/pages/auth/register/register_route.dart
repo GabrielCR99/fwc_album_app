@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+
 import 'presenter/register_presenter.dart';
 import 'presenter/register_presenter_impl.dart';
 import 'register_page.dart';

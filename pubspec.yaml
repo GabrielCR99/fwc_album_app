@@ -12,6 +12,7 @@ dependencies:
   dio: ^4.0.6
   flutter:
     sdk: flutter
+  flutter_awesome_select: ^6.5.0
   flutter_dotenv: ^5.0.2
   flutter_getit: ^1.2.1
   loading_animation_widget: ^1.2.0+3

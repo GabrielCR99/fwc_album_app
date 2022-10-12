@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './login_service.dart';
 import '../../repositories/auth/auth_repository.dart';
+import 'login_service.dart';
 
 class LoginServiceImpl implements LoginService {
   final AuthRepository _authRepository;

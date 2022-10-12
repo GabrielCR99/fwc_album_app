@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'colors_app.dart';
 
 class TextStyles {
@@ -62,8 +63,11 @@ class TextStyles {
   TextStyle get titleWhite =>
       textPrimaryFontBold.copyWith(color: Colors.white, fontSize: 22);
 
-  TextStyle get titleBack =>
+  TextStyle get titleBlack =>
       textPrimaryFontBold.copyWith(fontSize: 22, color: Colors.black);
+
+  TextStyle get titlePrimaryColor =>
+      textPrimaryFontBold.copyWith(color: ColorsApp.i.primary, fontSize: 22);
 }
 
 extension TextStylesExtension on BuildContext {

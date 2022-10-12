@@ -53,7 +53,7 @@ class _RegisterPageState extends RegisterViewImpl {
               const SizedBox(height: 50),
               Text(
                 'Cadastrar usuário',
-                style: context.textStyles.titleBack,
+                style: context.textStyles.titleBlack,
               ),
               const SizedBox(height: 30),
               Padding(

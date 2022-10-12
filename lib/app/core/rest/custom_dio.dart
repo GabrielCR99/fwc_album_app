@@ -2,8 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 
 import '../config/env/env.dart';
+import 'interceptors/auth_interceptor.dart';
 
 class CustomDio extends DioForNative {
+  final _authInterceptor = AuthInterceptor();
+
   CustomDio()
       : super(
           BaseOptions(
@@ -15,15 +18,7 @@ class CustomDio extends DioForNative {
     interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
   }
 
-  CustomDio auth() {
-    options.headers['Authorization'] = 'Bearer ${Env.i['token']}';
+  CustomDio auth() => this..interceptors.add(_authInterceptor);
 
-    return this;
-  }
-
-  CustomDio unauth() {
-    options.headers.remove('Authorization');
-
-    return this;
-  }
+  CustomDio unauth() => this..interceptors.remove(_authInterceptor);
 }
