@@ -74,7 +74,7 @@ class StickerDetailPresenterImpl implements StickerDetailPresenter {
         );
       }
       _view.saveSuccess();
-    } catch (e) {
+    } catch (_) {
       _view.error('Erro ao cadastrar ou atualizar a figurinha');
     }
   }
