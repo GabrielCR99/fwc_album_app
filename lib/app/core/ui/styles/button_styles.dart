@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'colors_app.dart';
+import 'app_colors.dart';
 import 'text_styles.dart';
 
 class ButtonStyles {
@@ -14,7 +14,7 @@ class ButtonStyles {
   }
 
   ButtonStyle get yellowButton => ElevatedButton.styleFrom(
-        backgroundColor: ColorsApp.i.yellow,
+        backgroundColor: AppColors.i.yellow,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
@@ -26,13 +26,13 @@ class ButtonStyles {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
-        side: BorderSide(color: ColorsApp.i.yellow),
+        side: BorderSide(color: AppColors.i.yellow),
         textStyle:
             TextStyles.i.textSecondaryFontExtraBold.copyWith(fontSize: 14),
       );
 
   ButtonStyle get primaryButton => ElevatedButton.styleFrom(
-        backgroundColor: ColorsApp.i.primary,
+        backgroundColor: AppColors.i.primary,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
@@ -44,7 +44,7 @@ class ButtonStyles {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
-        side: BorderSide(color: ColorsApp.i.primary),
+        side: BorderSide(color: AppColors.i.primary),
         textStyle:
             TextStyles.i.textSecondaryFontExtraBold.copyWith(fontSize: 14),
       );

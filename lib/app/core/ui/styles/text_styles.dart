@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'colors_app.dart';
+import 'app_colors.dart';
 
 class TextStyles {
   static TextStyles? _instance;
@@ -54,11 +54,11 @@ class TextStyles {
       );
 
   TextStyle get labelTextField => textSecondaryFontRegular.copyWith(
-        color: ColorsApp.i.darkGrey,
+        color: AppColors.i.darkGrey,
       );
 
   TextStyle get textSecondaryFontExtraBoldPrimaryColor =>
-      textSecondaryFontExtraBold.copyWith(color: ColorsApp.i.primary);
+      textSecondaryFontExtraBold.copyWith(color: AppColors.i.primary);
 
   TextStyle get titleWhite =>
       textPrimaryFontBold.copyWith(color: Colors.white, fontSize: 22);
@@ -67,7 +67,7 @@ class TextStyles {
       textPrimaryFontBold.copyWith(fontSize: 22, color: Colors.black);
 
   TextStyle get titlePrimaryColor =>
-      textPrimaryFontBold.copyWith(color: ColorsApp.i.primary, fontSize: 22);
+      textPrimaryFontBold.copyWith(color: AppColors.i.primary, fontSize: 22);
 }
 
 extension TextStylesExtension on BuildContext {

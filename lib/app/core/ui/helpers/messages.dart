@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-import '../styles/colors_app.dart';
+import '../styles/app_colors.dart';
 
 mixin Messages<T extends StatefulWidget> on State<T> {
   void showSuccess(String message) =>
@@ -19,7 +19,7 @@ mixin Messages<T extends StatefulWidget> on State<T> {
         context,
         CustomSnackBar.error(
           message: message,
-          backgroundColor: context.colorsApp.primary,
+          backgroundColor: context.appColors.primary,
         ),
       );
 }

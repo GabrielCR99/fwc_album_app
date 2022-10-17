@@ -25,7 +25,7 @@ class _StickerGroupFilterState extends State<StickerGroupFilter> {
       padding: const EdgeInsets.all(8),
       child: SmartSelect<String>.multiple(
         title: 'Filtro',
-        tileBuilder: (context, state) => InkWell(
+        tileBuilder: (_, state) => InkWell(
           onTap: state.showModal,
           child: _StickerGroupTile(
             label: state.selected.title?.join(', ') ?? 'Filtro',
@@ -35,7 +35,12 @@ class _StickerGroupFilterState extends State<StickerGroupFilter> {
             }),
           ),
         ),
-        onChange: (selectedValue) => _onChangeSelect(selectedValue, presenter),
+        onChange: (selectedValue) => selectedValue.value.isEmpty
+            ? setState(() {
+                selected = const [];
+                presenter.countryFilter(widget.countries.keys.toList());
+              })
+            : _onChangeSelect(selectedValue, presenter),
         selectedValue: selected ?? const [],
         choiceItems: S2Choice.listFrom(
           source: widget.countries.entries

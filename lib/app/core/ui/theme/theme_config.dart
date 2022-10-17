@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../styles/colors_app.dart';
+import '../styles/app_colors.dart';
 import '../styles/text_styles.dart';
 
 class ThemeConfig {
@@ -8,15 +8,15 @@ class ThemeConfig {
 
   static final _defaultInputBorder = OutlineInputBorder(
     borderRadius: const BorderRadius.all(Radius.circular(18)),
-    borderSide: BorderSide(color: ColorsApp.i.darkGrey),
+    borderSide: BorderSide(color: AppColors.i.darkGrey),
   );
 
   static final theme = ThemeData(
-    primaryColor: ColorsApp.i.primary,
+    primaryColor: AppColors.i.primary,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: ColorsApp.i.primary,
-      primary: ColorsApp.i.primary,
-      secondary: ColorsApp.i.secondary,
+      seedColor: AppColors.i.primary,
+      primary: AppColors.i.primary,
+      secondary: AppColors.i.secondary,
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,

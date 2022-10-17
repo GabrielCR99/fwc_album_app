@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/ui/styles/colors_app.dart';
+import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/text_styles.dart';
 
 class StatusTile extends StatelessWidget {
@@ -24,7 +24,7 @@ class StatusTile extends StatelessWidget {
           width: 46,
           child: CircleAvatar(
             radius: 46,
-            backgroundColor: context.colorsApp.grey,
+            backgroundColor: context.appColors.grey,
             child: image,
           ),
         ),

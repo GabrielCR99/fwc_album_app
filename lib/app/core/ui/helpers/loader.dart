@@ -8,8 +8,9 @@ mixin Loader<T extends StatefulWidget> on State<T> {
     if (!_isOpen) {
       _isOpen = true;
 
-      showDialog(
+      showDialog<void>(
         context: context,
+        barrierDismissible: false,
         builder: (_) => LoadingAnimationWidget.threeArchedCircle(
           color: Colors.white,
           size: 80,

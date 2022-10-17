@@ -36,23 +36,28 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return acessToken;
     } on DioError catch (e, s) {
-      log('Erro ao realizar login', error: e, stackTrace: s);
+      const errorMessage = 'Erro ao realizar login';
+
+      log(errorMessage, error: e, stackTrace: s);
 
       if (e.response?.statusCode == HttpStatus.unauthorized) {
         Error.throwWithStackTrace(UnauthorizedException(), s);
       }
 
-      Error.throwWithStackTrace(
-        const RepositoryException('Erro ao realizar login'),
-        s,
-      );
+      Error.throwWithStackTrace(const RepositoryException(errorMessage), s);
     }
   }
 
   @override
   Future<void> logout() async {
-    // TODO: implement logout
-    throw UnimplementedError();
+    try {
+      await _dio.auth().post('/api/auth/logout');
+    } on DioError catch (e, s) {
+      const errorMesssage = 'Erro ao realizar logout';
+      log(errorMesssage, error: e, stackTrace: s);
+
+      Error.throwWithStackTrace(const RepositoryException(errorMesssage), s);
+    }
   }
 
   @override
@@ -60,12 +65,10 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _dio.unauth().post('/api/register', data: registerModel.toMap());
     } on DioError catch (e, s) {
-      log('Erro ao registrar usuário', error: e, stackTrace: s);
+      const errorMesssage = 'Erro ao registrar usuário';
+      log(errorMesssage, error: e, stackTrace: s);
 
-      Error.throwWithStackTrace(
-        const RepositoryException('Erro ao registrar usuário'),
-        s,
-      );
+      Error.throwWithStackTrace(const RepositoryException(errorMesssage), s);
     }
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 
+import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/button_styles.dart';
-import '../../../core/ui/styles/colors_app.dart';
 import '../../../core/ui/styles/text_styles.dart';
 import '../../../core/ui/widgets/button.dart';
 import '../presenter/my_stickers_presenter.dart';
@@ -34,7 +34,7 @@ class StickerStatusFilter extends StatelessWidget {
                 : context.buttonStyles.primaryButton,
             labelStyle: filterSelected == 'all'
                 ? context.textStyles.textSecondaryFontMedium
-                    .copyWith(color: context.colorsApp.primary)
+                    .copyWith(color: context.appColors.primary)
                 : context.textStyles.textSecondaryFontMedium,
             label: 'Todas',
           ),
@@ -46,7 +46,7 @@ class StickerStatusFilter extends StatelessWidget {
                 : context.buttonStyles.primaryButton,
             labelStyle: filterSelected == 'missing'
                 ? context.textStyles.textSecondaryFontMedium
-                    .copyWith(color: context.colorsApp.primary)
+                    .copyWith(color: context.appColors.primary)
                 : context.textStyles.textSecondaryFontMedium,
             label: 'Faltando',
           ),
@@ -58,7 +58,7 @@ class StickerStatusFilter extends StatelessWidget {
                 : context.buttonStyles.primaryButton,
             labelStyle: filterSelected == 'repeated'
                 ? context.textStyles.textSecondaryFontMedium
-                    .copyWith(color: context.colorsApp.primary)
+                    .copyWith(color: context.appColors.primary)
                 : context.textStyles.textSecondaryFontMedium,
             label: 'Repetidas',
           ),

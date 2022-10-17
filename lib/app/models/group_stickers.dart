@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'user_sticker_model.dart';
 
 class GroupStickers {
@@ -21,18 +19,6 @@ class GroupStickers {
     required this.flag,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'country_code': countryCode,
-      'country_name': countryName,
-      'stickers_start': stickerStart,
-      'stickers_end': stickersEnd,
-      'stickers': stickers.map((x) => x.toMap()).toList(),
-      'flag': flag,
-    };
-  }
-
   factory GroupStickers.fromMap(Map<String, dynamic> map) {
     final stickers = map['stickers'] as List<dynamic>;
 
@@ -42,17 +28,11 @@ class GroupStickers {
       countryName: map['country_name'] ?? '',
       stickerStart: map['stickers_start']?.toInt() ?? 0,
       stickersEnd: map['stickers_end']?.toInt() ?? 0,
-      stickers: stickers.isEmpty
-          ? const []
-          : List<UserStickerModel>.from(
-              map['stickers']?.map(UserStickerModel.fromMap),
-            ),
+      stickers: stickers
+          .cast<Map<String, dynamic>>()
+          .map<UserStickerModel>(UserStickerModel.fromMap)
+          .toList(),
       flag: map['flag'] ?? '',
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory GroupStickers.fromJson(String source) =>
-      GroupStickers.fromMap(json.decode(source));
 }

@@ -5,4 +5,5 @@ abstract class MyStickersPresenter extends FwcPresenter<MyStickersView> {
   Future<void> getMyAlbum();
   void statusFilter(String status);
   void countryFilter(List<String>? countries);
+  Future<void> refresh();
 }

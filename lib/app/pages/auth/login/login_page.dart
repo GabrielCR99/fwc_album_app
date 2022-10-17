@@ -2,8 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:validatorless/validatorless.dart';
 
+import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/button_styles.dart';
-import '../../../core/ui/styles/colors_app.dart';
 import '../../../core/ui/styles/text_styles.dart';
 import '../../../core/ui/widgets/button.dart';
 import 'presenter/login_presenter.dart';
@@ -31,8 +31,10 @@ class _LoginPageState extends LoginViewImpl {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
-      backgroundColor: context.colorsApp.primary,
+      backgroundColor: context.appColors.primary,
       body: Form(
         key: _formKey,
         child: DecoratedBox(
@@ -49,10 +51,8 @@ class _LoginPageState extends LoginViewImpl {
                 sliver: SliverList(
                   delegate: SliverChildListDelegate.fixed([
                     SizedBox(
-                      height: MediaQuery.of(context).size.height *
-                          (MediaQuery.of(context).size.width > 350
-                              ? 0.3
-                              : 0.25),
+                      height: screenSize.height *
+                          (screenSize.width > 350 ? 0.3 : 0.25),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),
@@ -91,7 +91,7 @@ class _LoginPageState extends LoginViewImpl {
                         'Esqueceu a senha?',
                         style:
                             context.textStyles.textSecondaryFontMedium.copyWith(
-                          color: context.colorsApp.yellow,
+                          color: context.appColors.yellow,
                           fontSize: 14,
                         ),
                       ),
@@ -99,7 +99,7 @@ class _LoginPageState extends LoginViewImpl {
                     const SizedBox(height: 25),
                     Button(
                       onPressed: _onPressedLogin,
-                      width: MediaQuery.of(context).size.width * 0.9,
+                      width: screenSize.width * 0.9,
                       style: context.buttonStyles.yellowButton,
                       labelStyle: context
                           .textStyles.textSecondaryFontExtraBoldPrimaryColor,
@@ -124,7 +124,7 @@ class _LoginPageState extends LoginViewImpl {
                             TextSpan(
                               text: 'Cadastre-se',
                               style: context.textStyles.textSecondaryFontMedium
-                                  .copyWith(color: context.colorsApp.yellow),
+                                  .copyWith(color: context.appColors.yellow),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => Navigator.of(context)
                                     .pushNamed('/auth/register'),

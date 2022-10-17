@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/ui/styles/app_colors.dart';
 import '../../core/ui/styles/button_styles.dart';
-import '../../core/ui/styles/colors_app.dart';
 import '../../core/ui/styles/text_styles.dart';
 import '../../core/ui/widgets/button.dart';
 import 'presenter/splash_presenter.dart';
@@ -22,8 +22,10 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends SplashViewImpl {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
-      backgroundColor: context.colorsApp.primary,
+      backgroundColor: context.appColors.primary,
       body: DecoratedBox(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -37,11 +39,11 @@ class _SplashPageState extends SplashViewImpl {
               alignment: Alignment.topCenter,
               child: Padding(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.08,
+                  top: screenSize.height * 0.08,
                 ),
                 child: Image.asset(
                   'assets/images/fifa_logo.png',
-                  height: MediaQuery.of(context).size.height * 0.25,
+                  height: screenSize.height * 0.25,
                 ),
               ),
             ),
@@ -49,10 +51,10 @@ class _SplashPageState extends SplashViewImpl {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * 0.19,
+                  bottom: screenSize.height * 0.19,
                 ),
                 child: Button(
-                  width: MediaQuery.of(context).size.width * 0.9,
+                  width: screenSize.width * 0.9,
                   onPressed: () => widget.presenter.checkLogin(),
                   style: context.buttonStyles.yellowButton,
                   labelStyle:

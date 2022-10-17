@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 
-import '../../../core/ui/styles/colors_app.dart';
+import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/text_styles.dart';
 import '../../../models/group_stickers.dart';
 import '../../../models/user_sticker_model.dart';
+import '../presenter/my_stickers_presenter.dart';
 
 class StickerGroup extends StatelessWidget {
   final GroupStickers group;
@@ -106,11 +108,11 @@ class _Sticker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () async => _goToStickerDetail(context),
       child: ColoredBox(
         color: sticker != null
-            ? context.colorsApp.primary
-            : context.colorsApp.grey,
+            ? context.appColors.primary
+            : context.appColors.grey,
         child: Column(
           children: [
             Visibility(
@@ -124,7 +126,7 @@ class _Sticker extends StatelessWidget {
                 child: Text(
                   '${sticker?.duplicate ?? ''}',
                   style: context.textStyles.textSecondaryFontMedium
-                      .copyWith(color: context.colorsApp.yellow),
+                      .copyWith(color: context.appColors.yellow),
                 ),
               ),
             ),
@@ -144,5 +146,19 @@ class _Sticker extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _goToStickerDetail(BuildContext context) async {
+    final presenter = context.get<MyStickersPresenter>();
+    await Navigator.of(context).pushNamed(
+      '/sticker-detail',
+      arguments: {
+        'countryCode': countryCode,
+        'stickerNumber': stickerNumber,
+        'countryName': countryName,
+        'stickerUser': sticker,
+      },
+    );
+    presenter.refresh();
   }
 }

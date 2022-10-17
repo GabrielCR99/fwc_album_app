@@ -4,7 +4,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../repositories/auth/auth_repository.dart';
-import '../styles/colors_app.dart';
+import '../styles/app_colors.dart';
 import 'global_context.dart';
 
 class GlobalContextImpl implements GlobalContext {
@@ -20,12 +20,13 @@ class GlobalContextImpl implements GlobalContext {
   @override
   Future<void> loginExpire() async {
     final sp = await SharedPreferences.getInstance();
+    await _authRepository.logout();
     sp.clear();
     showTopSnackBar(
       _navigatorKey.currentState!.context,
       CustomSnackBar.error(
         message: 'Sua sessão expirou!',
-        backgroundColor: ColorsApp.i.primary,
+        backgroundColor: AppColors.i.primary,
       ),
       overlayState: _navigatorKey.currentState!.overlay,
     );

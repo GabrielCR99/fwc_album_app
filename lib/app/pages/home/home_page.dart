@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/ui/styles/app_colors.dart';
 import '../../core/ui/styles/button_styles.dart';
-import '../../core/ui/styles/colors_app.dart';
 import '../../core/ui/styles/text_styles.dart';
 import '../../core/ui/widgets/button.dart';
 import 'presenter/home_presenter.dart';
@@ -22,10 +22,10 @@ class _HomePageState extends HomeViewImpl {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colorsApp.primary,
+      backgroundColor: context.appColors.primary,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: context.colorsApp.primary,
+        backgroundColor: context.appColors.primary,
         actions: [
           IconButton(
             onPressed: () => widget.presenter.logout(),
@@ -86,7 +86,7 @@ class _HomePageState extends HomeViewImpl {
                       outline: true,
                       style: context.buttonStyles.yellowOutlineButton,
                       labelStyle: context.textStyles.textSecondaryFontExtraBold
-                          .copyWith(color: context.colorsApp.yellow),
+                          .copyWith(color: context.appColors.yellow),
                       label: 'Minhas figurinhas',
                     ),
                   ],

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class UserModel {
   final String name;
   final String email;
@@ -19,16 +17,6 @@ class UserModel {
     required this.totalCompletePercent,
   });
 
-  Map<String, dynamic> toMap() => {
-        'name': name,
-        'email': email,
-        'total_album': totalAlbum,
-        'total_stickers': totalStickers,
-        'total_duplicates': totalDuplicates,
-        'total_complete': totalComplete,
-        'total_complete_percent': totalCompletePercent,
-      };
-
   factory UserModel.fromMap(Map<String, dynamic> map) => UserModel(
         name: map['name'] ?? '',
         email: map['email'] ?? '',
@@ -38,9 +26,4 @@ class UserModel {
         totalComplete: map['total_complete']?.toInt() ?? 0,
         totalCompletePercent: map['total_complete_percent']?.toInt() ?? 0,
       );
-
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source));
 }

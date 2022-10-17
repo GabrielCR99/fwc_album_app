@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-class ColorsApp {
-  static ColorsApp? _instance;
-  const ColorsApp._();
+class AppColors {
+  static AppColors? _instance;
+  const AppColors._();
 
-  static ColorsApp get i {
-    _instance ??= const ColorsApp._();
+  static AppColors get i {
+    _instance ??= const AppColors._();
 
     return _instance!;
   }
@@ -17,6 +17,6 @@ class ColorsApp {
   Color get darkGrey => const Color(0xFF999999);
 }
 
-extension ColorsAppExtension on BuildContext {
-  ColorsApp get colorsApp => ColorsApp.i;
+extension AppColorsExtension on BuildContext {
+  AppColors get appColors => AppColors.i;
 }

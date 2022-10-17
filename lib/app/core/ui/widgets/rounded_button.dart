@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../styles/colors_app.dart';
+import '../styles/app_colors.dart';
 
 class RoundedButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onPressed;
 
-  const RoundedButton({
-    required this.icon,
-    required this.onPressed,
-    super.key,
-  });
+  const RoundedButton({required this.icon, required this.onPressed, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +21,7 @@ class RoundedButton extends StatelessWidget {
         ),
         child: IconButton(
           onPressed: onPressed,
-          icon: Icon(icon, color: context.colorsApp.darkGrey),
+          icon: Icon(icon, color: context.appColors.darkGrey),
         ),
       ),
     );

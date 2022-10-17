@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../../core/ui/styles/colors_app.dart';
+import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/text_styles.dart';
 
 class PercentWidget extends StatelessWidget {
@@ -19,7 +19,7 @@ class PercentWidget extends StatelessWidget {
           width: 70,
           height: 70,
           decoration: BoxDecoration(
-            color: context.colorsApp.grey,
+            color: context.appColors.grey,
             shape: BoxShape.circle,
           ),
           child: Center(

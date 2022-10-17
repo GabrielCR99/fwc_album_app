@@ -19,8 +19,10 @@ class UserRepositoryImpl implements UserRepository {
 
       return UserModel.fromMap(result.data);
     } on DioError catch (e, s) {
-      log('Erro ao buscar usuário logado:', error: e, stackTrace: s);
-      Error.throwWithStackTrace(RepositoryException(e.message), s);
+      const errorMessage = 'Erro ao buscar usuário logado';
+
+      log(errorMessage, error: e, stackTrace: s);
+      Error.throwWithStackTrace(const RepositoryException(errorMessage), s);
     }
   }
 }
