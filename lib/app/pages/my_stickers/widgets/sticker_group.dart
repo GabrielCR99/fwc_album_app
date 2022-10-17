@@ -3,6 +3,7 @@ import 'package:flutter_getit/flutter_getit.dart';
 
 import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/text_styles.dart';
+import '../../../core/ui/widgets/nil.dart';
 import '../../../models/group_stickers.dart';
 import '../../../models/user_sticker_model.dart';
 import '../presenter/my_stickers_presenter.dart';
@@ -83,7 +84,7 @@ class StickerGroup extends StatelessWidget {
                 }
               }
 
-              return const SizedBox.shrink();
+              return const Nil();
             },
           ),
         ],
@@ -122,7 +123,7 @@ class _Sticker extends StatelessWidget {
               maintainState: true,
               child: Container(
                 alignment: Alignment.topRight,
-                padding: const EdgeInsets.all(2),
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                 child: Text(
                   '${sticker?.duplicate ?? ''}',
                   style: context.textStyles.textSecondaryFontMedium

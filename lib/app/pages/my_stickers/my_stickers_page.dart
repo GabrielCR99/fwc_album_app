@@ -19,9 +19,7 @@ class _MyStickersPageState extends MyStickersViewImpl {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Stickers'),
-      ),
+      appBar: AppBar(title: const Text('Minhas figurinhas')),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(

@@ -55,7 +55,7 @@ class _SplashPageState extends SplashViewImpl {
                 ),
                 child: Button(
                   width: screenSize.width * 0.9,
-                  onPressed: () => widget.presenter.checkLogin(),
+                  onPressed: widget.presenter.checkLogin,
                   style: context.buttonStyles.yellowButton,
                   labelStyle:
                       context.textStyles.textSecondaryFontExtraBoldPrimaryColor,

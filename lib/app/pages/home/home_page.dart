@@ -29,7 +29,7 @@ class _HomePageState extends HomeViewImpl {
         backgroundColor: context.appColors.primary,
         actions: [
           IconButton(
-            onPressed: () => widget.presenter.logout(),
+            onPressed: widget.presenter.logout,
             icon: const Icon(Icons.logout, color: Colors.white),
           ),
         ],

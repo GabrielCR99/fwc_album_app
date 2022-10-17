@@ -22,10 +22,7 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detalhe Figurinha'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Detalhe Figurinha'), centerTitle: true),
       body: SizedBox(
         width: screenWidth,
         child: SingleChildScrollView(
