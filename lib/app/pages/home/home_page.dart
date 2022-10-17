@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 
 import '../../core/ui/styles/app_colors.dart';
 import '../../core/ui/styles/button_styles.dart';
@@ -81,8 +82,7 @@ class _HomePageState extends HomeViewImpl {
                     ),
                     const SizedBox(height: 20),
                     Button(
-                      onPressed: () => Navigator.of(context)
-                          .pushNamed('/my-stickers', arguments: user),
+                      onPressed: () => _goToMyStickers(context),
                       outline: true,
                       style: context.buttonStyles.yellowOutlineButton,
                       labelStyle: context.textStyles.textSecondaryFontExtraBold
@@ -97,5 +97,13 @@ class _HomePageState extends HomeViewImpl {
         ),
       ),
     );
+  }
+
+  Future<void> _goToMyStickers(BuildContext context) async {
+    final presenter = context.get<HomePresenter>();
+
+    await Navigator.of(context).pushNamed('/my-stickers', arguments: user);
+
+    presenter.getUserData();
   }
 }

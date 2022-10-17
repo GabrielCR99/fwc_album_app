@@ -108,7 +108,7 @@ class _Sticker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () async => _goToStickerDetail(context),
+      onTap: () => _goToStickerDetail(context),
       child: ColoredBox(
         color: sticker != null
             ? context.appColors.primary
