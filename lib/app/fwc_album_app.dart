@@ -26,10 +26,7 @@ class FwcAlbumApp extends StatelessWidget {
         Bind.lazySingleton((_) => CustomDio()),
         Bind.lazySingleton<AuthRepository>((i) => AuthRepositoryImpl(dio: i())),
         Bind.lazySingleton<GlobalContext>(
-          (i) => GlobalContextImpl(
-            navigatorKey: _navigatorKey,
-            authRepository: i(),
-          ),
+          (_) => GlobalContextImpl(navigatorKey: _navigatorKey),
         ),
       ],
       child: MaterialApp(
