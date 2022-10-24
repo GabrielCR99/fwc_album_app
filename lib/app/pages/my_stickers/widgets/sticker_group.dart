@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/text_styles.dart';
@@ -35,9 +36,11 @@ class StickerGroup extends StatelessWidget {
                   alignment: const Alignment(0, -0.1),
                   widthFactor: 1,
                   heightFactor: 0.1,
-                  child: Image.network(
-                    group.flag,
-                    cacheWidth: (MediaQuery.of(context).size.width * 3).toInt(),
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: group.flag,
+                    imageCacheWidth:
+                        (MediaQuery.of(context).size.width * 3).toInt(),
                   ),
                 ),
               ),
