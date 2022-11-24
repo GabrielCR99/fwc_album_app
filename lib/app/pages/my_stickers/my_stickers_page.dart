@@ -36,10 +36,7 @@ class _MyStickersPageState extends MyStickersViewImpl {
               (_, index) {
                 final group = stickerGroups[index];
 
-                return StickerGroup(
-                  group: group,
-                  statusFilter: statusFilter,
-                );
+                return StickerGroup(group: group, statusFilter: statusFilter);
               },
             ),
           ),

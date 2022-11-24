@@ -102,7 +102,7 @@ class _HomePageState extends HomeViewImpl {
   Future<void> _goToMyStickers(BuildContext context) async {
     final presenter = context.get<HomePresenter>();
 
-    await Navigator.of(context).pushNamed('/my-stickers', arguments: user);
+    await Navigator.of(context).pushNamed('/my-stickers');
 
     presenter.getUserData();
   }

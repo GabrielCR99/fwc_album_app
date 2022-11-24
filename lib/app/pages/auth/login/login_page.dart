@@ -69,6 +69,7 @@ class _LoginPageState extends LoginViewImpl {
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                       ),
                       controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
                       validator: Validatorless.multiple([
                         Validatorless.required('Email requerido'),
                         Validatorless.email('Email inválido'),

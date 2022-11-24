@@ -11,9 +11,8 @@ class MyStickersPresenterImpl implements MyStickersPresenter {
   var selectedStatus = 'all';
   List<String>? countries;
 
-  MyStickersPresenterImpl({
-    required StickersRepository stickersRepository,
-  }) : _stickersRepository = stickersRepository;
+  MyStickersPresenterImpl({required StickersRepository stickersRepository})
+      : _stickersRepository = stickersRepository;
 
   @override
   Future<void> getMyAlbum() async {

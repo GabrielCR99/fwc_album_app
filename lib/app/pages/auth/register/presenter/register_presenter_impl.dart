@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import '../../../../core/exceptions/repository_exception.dart';
 import '../../../../models/register_user_model.dart';
 import '../../../../repositories/auth/auth_repository.dart';
 import '../view/register_view.dart';
@@ -29,9 +30,9 @@ class RegisterPresenterImpl implements RegisterPresenter {
     try {
       await _repository.register(registerUserModel);
       _view.onRegisterSuccess();
-    } catch (e) {
-      log('Erro ao registrar usuário: $e');
-      _view.onRegisterError(e.toString());
+    } on RepositoryException catch (e) {
+      log(e.message);
+      _view.onRegisterError(e.message);
     }
   }
 

@@ -17,12 +17,11 @@ class GlobalContextImpl implements GlobalContext {
     final sp = await SharedPreferences.getInstance();
     await sp.clear();
     showTopSnackBar(
-      _navigatorKey.currentState!.context,
+      _navigatorKey.currentState!.overlay!,
       CustomSnackBar.error(
         message: 'Sua sessão expirou! Faça o login novamente.',
         backgroundColor: AppColors.i.primary,
       ),
-      overlayState: _navigatorKey.currentState!.overlay,
     );
     _navigatorKey.currentState!.pushNamedAndRemoveUntil(
       '/auth/login',

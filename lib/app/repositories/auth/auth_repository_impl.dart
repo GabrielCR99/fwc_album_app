@@ -65,10 +65,11 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _dio.unauth().post('/api/register', data: registerModel.toMap());
     } on DioError catch (e, s) {
-      const errorMesssage = 'Erro ao registrar usuário';
+      final errorMesssage =
+          e.response?.data['error'] ?? 'Erro ao cadastrar usuário';
       log(errorMesssage, error: e, stackTrace: s);
 
-      Error.throwWithStackTrace(const RepositoryException(errorMesssage), s);
+      Error.throwWithStackTrace(RepositoryException(errorMesssage), s);
     }
   }
 }
