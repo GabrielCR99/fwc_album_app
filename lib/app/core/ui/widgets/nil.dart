@@ -27,6 +27,8 @@ class _NilElement extends Element {
 
   @override
   void performRebuild() {
+    super.performRebuild();
+
     return;
   }
 }
