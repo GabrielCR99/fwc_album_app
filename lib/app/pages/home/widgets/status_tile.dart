@@ -18,13 +18,13 @@ class StatusTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.sizeOf(context).width * 0.7,
       child: ListTile(
         leading: SizedBox(
           width: 46,
           child: CircleAvatar(
-            radius: 46,
             backgroundColor: context.appColors.grey,
+            radius: 46,
             child: image,
           ),
         ),

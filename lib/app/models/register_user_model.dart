@@ -1,4 +1,4 @@
-class RegisterUserModel {
+final class RegisterUserModel {
   final String name;
   final String email;
   final String password;

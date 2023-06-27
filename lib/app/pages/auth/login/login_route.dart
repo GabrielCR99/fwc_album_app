@@ -7,7 +7,7 @@ import 'login_page.dart';
 import 'presenter/login_presenter.dart';
 import 'presenter/login_presenter_impl.dart';
 
-class LoginRoute extends FlutterGetItPageRoute {
+final class LoginRoute extends FlutterGetItPageRoute {
   const LoginRoute({super.key});
 
   @override

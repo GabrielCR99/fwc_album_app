@@ -15,12 +15,97 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends RegisterViewImpl {
+final class _RegisterPageState extends RegisterViewImpl {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Form(
+        key: _formKey,
+        child: ListView(
+          children: [
+            const SizedBox(height: 20),
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/bola.png'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              height: 106.82,
+            ),
+            const SizedBox(height: 50),
+            Center(
+              child: Text(
+                'Cadastrar usuário',
+                style: context.textStyles.titleBlack,
+              ),
+            ),
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: _nameController,
+                    decoration:
+                        const InputDecoration(labelText: 'Nome completo *'),
+                    validator: Validatorless.required('Nome obrigatório'),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(labelText: 'Email *'),
+                    validator: Validatorless.multiple([
+                      Validatorless.required('Email obrigatório'),
+                      Validatorless.email('Email inválido'),
+                    ]),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(labelText: 'Senha *'),
+                    obscureText: true,
+                    validator: Validatorless.multiple([
+                      Validatorless.required('Senha obrigatória'),
+                      Validatorless.min(
+                        6,
+                        'Senha deve ter no mínimo 6 dígitos',
+                      ),
+                    ]),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _confirmPasswordController,
+                    decoration: const InputDecoration(
+                      labelText: 'Confirmar senha *',
+                    ),
+                    obscureText: true,
+                    validator: Validatorless.compare(
+                      _passwordController,
+                      'As senhas não conferem',
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Button.primary(
+                    label: 'Cadastrar',
+                    width: MediaQuery.sizeOf(context).width * 0.9,
+                    onPressed: _onPressedRegister,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   void dispose() {
@@ -29,90 +114,6 @@ class _RegisterPageState extends RegisterViewImpl {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              Container(
-                height: 106.82,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/bola.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 50),
-              Text(
-                'Cadastrar usuário',
-                style: context.textStyles.titleBlack,
-              ),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    TextFormField(
-                      decoration:
-                          const InputDecoration(labelText: 'Nome completo *'),
-                      controller: _nameController,
-                      validator: Validatorless.required('Nome obrigatório'),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      decoration: const InputDecoration(labelText: 'Email *'),
-                      controller: _emailController,
-                      validator: Validatorless.multiple([
-                        Validatorless.required('Email obrigatório'),
-                        Validatorless.email('Email inválido'),
-                      ]),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      decoration: const InputDecoration(labelText: 'Senha *'),
-                      obscureText: true,
-                      controller: _passwordController,
-                      validator: Validatorless.multiple([
-                        Validatorless.required('Senha obrigatória'),
-                        Validatorless.min(
-                          6,
-                          'Senha deve ter no mínimo 6 dígitos',
-                        ),
-                      ]),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      decoration:
-                          const InputDecoration(labelText: 'Confirmar senha *'),
-                      obscureText: true,
-                      controller: _confirmPasswordController,
-                      validator: Validatorless.compare(
-                        _passwordController,
-                        'As senhas não conferem',
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Button.primary(
-                      label: 'Cadastrar',
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      onPressed: _onPressedRegister,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 
   void _onPressedRegister() {

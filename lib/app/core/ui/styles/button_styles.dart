@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'text_styles.dart';
 
-class ButtonStyles {
+final class ButtonStyles {
   static ButtonStyles? _instance;
   const ButtonStyles._();
 

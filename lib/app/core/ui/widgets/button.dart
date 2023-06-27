@@ -45,14 +45,10 @@ class Button extends StatelessWidget {
       width: width,
       height: height,
       child: outline
-          ? OutlinedButton(
-              style: style,
-              onPressed: onPressed,
-              child: labelText,
-            )
+          ? OutlinedButton(onPressed: onPressed, style: style, child: labelText)
           : ElevatedButton(
-              style: style,
               onPressed: onPressed,
+              style: style,
               child: labelText,
             ),
     );

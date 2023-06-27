@@ -1,5 +1,5 @@
 import '../../models/user_model.dart';
 
-abstract class UserRepository {
+abstract interface class UserRepository {
   Future<UserModel> getMe();
 }

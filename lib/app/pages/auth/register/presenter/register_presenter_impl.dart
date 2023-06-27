@@ -6,7 +6,7 @@ import '../../../../repositories/auth/auth_repository.dart';
 import '../view/register_view.dart';
 import 'register_presenter.dart';
 
-class RegisterPresenterImpl implements RegisterPresenter {
+final class RegisterPresenterImpl implements RegisterPresenter {
   final AuthRepository _repository;
   late final RegisterView _view;
 
@@ -38,4 +38,7 @@ class RegisterPresenterImpl implements RegisterPresenter {
 
   @override
   set view(RegisterView view) => _view = view;
+
+  @override
+  RegisterView get view => _view;
 }

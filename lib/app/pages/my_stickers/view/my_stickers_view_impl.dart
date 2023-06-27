@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 
 import '../../../core/ui/helpers/loader.dart';
@@ -6,7 +8,7 @@ import '../../../models/group_stickers.dart';
 import '../my_stickers_page.dart';
 import 'my_stickers_view.dart';
 
-abstract class MyStickersViewImpl extends State<MyStickersPage>
+abstract base class MyStickersViewImpl extends State<MyStickersPage>
     with Messages<MyStickersPage>, Loader<MyStickersPage>
     implements MyStickersView {
   var stickerGroups = <GroupStickers>[];
@@ -17,7 +19,7 @@ abstract class MyStickersViewImpl extends State<MyStickersPage>
   void initState() {
     super.initState();
     widget.presenter.view = this;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    scheduleMicrotask(() {
       showLoader();
       widget.presenter.getMyAlbum();
     });

@@ -1,6 +1,6 @@
 import 'user_sticker_model.dart';
 
-class GroupStickers {
+final class GroupStickers {
   final int id;
   final String countryCode;
   final String countryName;
@@ -20,19 +20,19 @@ class GroupStickers {
   });
 
   factory GroupStickers.fromMap(Map<String, dynamic> map) {
-    final stickers = map['stickers'] as List<dynamic>;
+    final stickers = map['stickers'] as List<Object?>;
 
     return GroupStickers(
-      id: map['id']?.toInt() ?? 0,
-      countryCode: map['country_code'] ?? '',
-      countryName: map['country_name'] ?? '',
-      stickerStart: map['stickers_start']?.toInt() ?? 0,
-      stickersEnd: map['stickers_end']?.toInt() ?? 0,
+      id: (map['id'] ?? 0) as int,
+      countryCode: (map['country_code'] ?? '') as String,
+      countryName: (map['country_name'] ?? '') as String,
+      stickerStart: (map['stickers_start'] ?? 0) as int,
+      stickersEnd: (map['stickers_end'] ?? 0) as int,
       stickers: stickers
           .cast<Map<String, dynamic>>()
           .map<UserStickerModel>(UserStickerModel.fromMap)
           .toList(),
-      flag: map['flag'] ?? '',
+      flag: (map['flag'] ?? '') as String,
     );
   }
 }

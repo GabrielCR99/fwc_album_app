@@ -10,7 +10,7 @@ import '../../models/register_sticker_model.dart';
 import '../../models/sticker_model.dart';
 import 'stickers_repository.dart';
 
-class StickersRepositoryImpl implements StickersRepository {
+final class StickersRepositoryImpl implements StickersRepository {
   final CustomDio _dio;
 
   const StickersRepositoryImpl({required CustomDio dio}) : _dio = dio;
@@ -18,15 +18,13 @@ class StickersRepositoryImpl implements StickersRepository {
   @override
   Future<List<GroupStickers>> getMyAlbum() async {
     try {
-      final result = await _dio.get('/api/countries');
+      final result = await _dio.get<List<Object?>>('/api/countries');
 
-      final data = result.data as List;
-
-      return data
+      return result.data!
           .cast<Map<String, dynamic>>()
           .map<GroupStickers>(GroupStickers.fromMap)
           .toList();
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       log('Erro ao buscar os stickers', error: e, stackTrace: s);
 
       Error.throwWithStackTrace(
@@ -39,7 +37,7 @@ class StickersRepositoryImpl implements StickersRepository {
   @override
   Future<StickerModel?> findStickerByCode(String code, String number) async {
     try {
-      final result = await _dio.auth().get(
+      final result = await _dio.auth().get<Map<String, dynamic>>(
         '/api/sticker-search',
         queryParameters: {
           'sticker_code': code,
@@ -47,8 +45,8 @@ class StickersRepositoryImpl implements StickersRepository {
         },
       );
 
-      return StickerModel.fromMap(result.data);
-    } on DioError catch (e, s) {
+      return StickerModel.fromMap(result.data!);
+    } on DioException catch (e, s) {
       const errorMessage = 'Erro ao buscar figurinha';
 
       log(errorMessage, error: e, stackTrace: s);
@@ -66,10 +64,12 @@ class StickersRepositoryImpl implements StickersRepository {
     try {
       final body = FormData.fromMap({...registerStickerModel.toMap()});
 
-      final result = await _dio.auth().post('/api/sticker', data: body);
+      final result = await _dio
+          .auth()
+          .post<Map<String, dynamic>>('/api/sticker', data: body);
 
-      return StickerModel.fromMap(result.data);
-    } on DioError catch (e, s) {
+      return StickerModel.fromMap(result.data!);
+    } on DioException catch (e, s) {
       const errorMessage = 'Erro ao criar figurinha';
 
       log(errorMessage, error: e, stackTrace: s);
@@ -81,11 +81,11 @@ class StickersRepositoryImpl implements StickersRepository {
   @override
   Future<void> registerUserSticker(int stickerId, int amount) async {
     try {
-      await _dio.auth().post(
+      await _dio.auth().post<void>(
         '/api/user/sticker',
         data: {'id_sticker': stickerId, 'amount': amount},
       );
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       const errorMessage = 'Erro ao registrar figurinha';
 
       log(errorMessage, error: e, stackTrace: s);
@@ -97,11 +97,11 @@ class StickersRepositoryImpl implements StickersRepository {
   @override
   Future<void> updateUserSticker(int stickerId, int amount) async {
     try {
-      await _dio.auth().put(
+      await _dio.auth().put<void>(
         '/api/user/sticker',
         data: {'id_sticker': stickerId, 'amount': amount},
       );
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       const errorMessage = 'Erro ao registrar figurinha';
 
       log(errorMessage, error: e, stackTrace: s);

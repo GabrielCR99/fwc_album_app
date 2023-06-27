@@ -5,7 +5,7 @@ import 'presenter/register_presenter.dart';
 import 'presenter/register_presenter_impl.dart';
 import 'register_page.dart';
 
-class RegisterRoute extends FlutterGetItPageRoute {
+final class RegisterRoute extends FlutterGetItPageRoute {
   const RegisterRoute({super.key});
 
   @override

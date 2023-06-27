@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../view/splash_view.dart';
 import 'splash_presenter.dart';
 
-class SplashPresenterImpl implements SplashPresenter {
+final class SplashPresenterImpl implements SplashPresenter {
   late final SplashView _view;
 
   @override
@@ -17,4 +17,7 @@ class SplashPresenterImpl implements SplashPresenter {
 
   @override
   set view(SplashView view) => _view = view;
+
+  @override
+  SplashView get view => _view;
 }

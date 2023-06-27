@@ -1,9 +1,9 @@
 import '../../models/register_sticker_model.dart';
 import '../../models/sticker_model.dart';
 import '../../repositories/stickers/stickers_repository.dart';
-import 'find_sticer_service.dart';
+import 'find_sticker_service.dart';
 
-class FindSticerServiceImpl implements FindSticerService {
+final class FindSticerServiceImpl implements FindStickerService {
   final StickersRepository _stickersRepository;
 
   const FindSticerServiceImpl({required StickersRepository stickersRepository})

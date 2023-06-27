@@ -15,7 +15,7 @@ class MyStickersPage extends StatefulWidget {
   State<MyStickersPage> createState() => _MyStickersPageState();
 }
 
-class _MyStickersPageState extends MyStickersViewImpl {
+final class _MyStickersPageState extends MyStickersViewImpl {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,12 +32,12 @@ class _MyStickersPageState extends MyStickersViewImpl {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: stickerGroups.length,
               (_, index) {
                 final group = stickerGroups[index];
 
                 return StickerGroup(group: group, statusFilter: statusFilter);
               },
+              childCount: stickerGroups.length,
             ),
           ),
         ],

@@ -6,7 +6,7 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../styles/app_colors.dart';
 import 'global_context.dart';
 
-class GlobalContextImpl implements GlobalContext {
+final class GlobalContextImpl implements GlobalContext {
   final GlobalKey<NavigatorState> _navigatorKey;
 
   const GlobalContextImpl({required GlobalKey<NavigatorState> navigatorKey})

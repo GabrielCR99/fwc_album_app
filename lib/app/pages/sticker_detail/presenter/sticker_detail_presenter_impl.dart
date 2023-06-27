@@ -1,22 +1,23 @@
+import '../../../core/exceptions/repository_exception.dart';
 import '../../../models/sticker_model.dart';
 import '../../../models/user_sticker_model.dart';
 import '../../../repositories/stickers/stickers_repository.dart';
-import '../../../services/sticker/find_sticer_service.dart';
+import '../../../services/sticker/find_sticker_service.dart';
 import '../view/sticker_detail_view.dart';
 import 'sticker_detail_presenter.dart';
 
 class StickerDetailPresenterImpl implements StickerDetailPresenter {
+  int amount = 0;
   late final StickerDetailView _view;
-  final FindSticerService _findSticerService;
+  final FindStickerService _findStickerService;
   final StickersRepository _stickersRepository;
   UserStickerModel? _stickerUser;
   late final StickerModel _sticker;
-  int amount = 0;
 
   StickerDetailPresenterImpl({
-    required FindSticerService findSticerService,
+    required FindStickerService findSticerService,
     required StickersRepository stickersRepository,
-  })  : _findSticerService = findSticerService,
+  })  : _findStickerService = findSticerService,
         _stickersRepository = stickersRepository;
 
   @override
@@ -31,23 +32,28 @@ class StickerDetailPresenterImpl implements StickerDetailPresenter {
   }) async {
     _stickerUser = stickerUser;
 
-    if (_stickerUser == null) {
-      _sticker = await _findSticerService.execute(countryCode, stickerNumber);
+    try {
+      if (_stickerUser == null) {
+        _sticker =
+            await _findStickerService.execute(countryCode, stickerNumber);
+      }
+
+      final hasSticker = _stickerUser != null;
+
+      if (hasSticker) {
+        amount = (_stickerUser?.duplicate ?? 0) + 1;
+      }
+
+      _view.screenLoaded(
+        hasSticker: hasSticker,
+        countryCode,
+        stickerNumber,
+        countryName,
+        amount,
+      );
+    } on RepositoryException catch (e) {
+      _view.error(e.message);
     }
-
-    final hasSticker = _stickerUser != null;
-
-    if (hasSticker) {
-      amount = (_stickerUser?.duplicate ?? 0) + 1;
-    }
-
-    _view.screenLoaded(
-      hasSticker: hasSticker,
-      countryCode,
-      stickerNumber,
-      countryName,
-      amount,
-    );
   }
 
   @override
@@ -87,4 +93,7 @@ class StickerDetailPresenterImpl implements StickerDetailPresenter {
     }
     _view.saveSuccess();
   }
+
+  @override
+  StickerDetailView get view => _view;
 }

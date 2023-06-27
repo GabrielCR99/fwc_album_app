@@ -4,12 +4,12 @@ import '../view/my_stickers_view.dart';
 import 'my_stickers_presenter.dart';
 
 class MyStickersPresenterImpl implements MyStickersPresenter {
-  final StickersRepository _stickersRepository;
-  late final MyStickersView _view;
-
   var album = <GroupStickers>[];
   var selectedStatus = 'all';
   List<String>? countries;
+
+  final StickersRepository _stickersRepository;
+  late final MyStickersView _view;
 
   MyStickersPresenterImpl({required StickersRepository stickersRepository})
       : _stickersRepository = stickersRepository;
@@ -50,4 +50,7 @@ class MyStickersPresenterImpl implements MyStickersPresenter {
     countryFilter(countries);
     statusFilter(selectedStatus);
   }
+
+  @override
+  MyStickersView get view => _view;
 }

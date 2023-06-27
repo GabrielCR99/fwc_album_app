@@ -5,7 +5,7 @@ import '../../../../core/ui/helpers/messages.dart';
 import '../login_page.dart';
 import 'login_view.dart';
 
-abstract class LoginViewImpl extends State<LoginPage>
+abstract base class LoginViewImpl extends State<LoginPage>
     with Messages<LoginPage>, Loader<LoginPage>
     implements LoginView {
   @override

@@ -16,12 +16,12 @@ class PercentWidget extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          width: 70,
-          height: 70,
           decoration: BoxDecoration(
             color: context.appColors.grey,
             shape: BoxShape.circle,
           ),
+          width: 70,
+          height: 70,
           child: Center(
             child: Text(
               '$percent %',
@@ -30,15 +30,15 @@ class PercentWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 110,
           width: 110,
+          height: 110,
           child: Transform.rotate(
             angle: -pi / 2.5,
             child: CircularProgressIndicator(
-              color: Colors.white,
-              backgroundColor: Colors.white.withOpacity(0.5),
-              strokeWidth: 5,
               value: percent / 100,
+              backgroundColor: Colors.white.withOpacity(0.5),
+              color: Colors.white,
+              strokeWidth: 5,
             ),
           ),
         ),

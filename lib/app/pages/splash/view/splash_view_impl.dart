@@ -4,7 +4,7 @@ import '../../../core/ui/helpers/loader.dart';
 import '../splash_page.dart';
 import 'splash_view.dart';
 
-abstract class SplashViewImpl extends State<SplashPage>
+abstract base class SplashViewImpl extends State<SplashPage>
     with Loader<SplashPage>
     implements SplashView {
   @override

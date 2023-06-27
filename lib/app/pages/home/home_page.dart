@@ -19,20 +19,19 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends HomeViewImpl {
+final class _HomePageState extends HomeViewImpl {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.appColors.primary,
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: context.appColors.primary,
         actions: [
           IconButton(
             onPressed: widget.presenter.logout,
             icon: const Icon(Icons.logout, color: Colors.white),
           ),
         ],
+        elevation: 0,
+        backgroundColor: context.appColors.primary,
       ),
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -50,7 +49,7 @@ class _HomePageState extends HomeViewImpl {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(bottom: 35),
-                      width: MediaQuery.of(context).size.width,
+                      width: MediaQuery.sizeOf(context).width,
                       child: Image.asset(
                         'assets/images/bola.png',
                         fit: BoxFit.cover,
@@ -82,12 +81,12 @@ class _HomePageState extends HomeViewImpl {
                     ),
                     const SizedBox(height: 20),
                     Button(
-                      onPressed: () => _goToMyStickers(context),
-                      outline: true,
                       style: context.buttonStyles.yellowOutlineButton,
                       labelStyle: context.textStyles.textSecondaryFontExtraBold
                           .copyWith(color: context.appColors.yellow),
                       label: 'Minhas figurinhas',
+                      onPressed: () => _goToMyStickers(context),
+                      outline: true,
                     ),
                   ],
                 ),
@@ -96,6 +95,7 @@ class _HomePageState extends HomeViewImpl {
           ),
         ),
       ),
+      backgroundColor: context.appColors.primary,
     );
   }
 

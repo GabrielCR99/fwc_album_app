@@ -16,19 +16,17 @@ class StickerStatusFilter extends StatelessWidget {
   Widget build(BuildContext context) {
     final presenter = context.get<MyStickersPresenter>();
 
-    final screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.sizeOf(context);
     final buttonWidth = screenSize.width * 0.3;
 
     return Container(
-      width: screenSize.width,
       padding: const EdgeInsets.symmetric(horizontal: 10),
+      width: screenSize.width,
       child: Wrap(
         alignment: WrapAlignment.center,
         spacing: 5,
         children: [
           Button(
-            width: buttonWidth,
-            onPressed: () => presenter.statusFilter('all'),
             style: filterSelected == 'all'
                 ? context.buttonStyles.yellowButton
                 : context.buttonStyles.primaryButton,
@@ -37,10 +35,10 @@ class StickerStatusFilter extends StatelessWidget {
                     .copyWith(color: context.appColors.primary)
                 : context.textStyles.textSecondaryFontMedium,
             label: 'Todas',
+            width: buttonWidth,
+            onPressed: () => presenter.statusFilter('all'),
           ),
           Button(
-            width: buttonWidth,
-            onPressed: () => presenter.statusFilter('missing'),
             style: filterSelected == 'missing'
                 ? context.buttonStyles.yellowButton
                 : context.buttonStyles.primaryButton,
@@ -49,10 +47,10 @@ class StickerStatusFilter extends StatelessWidget {
                     .copyWith(color: context.appColors.primary)
                 : context.textStyles.textSecondaryFontMedium,
             label: 'Faltando',
+            width: buttonWidth,
+            onPressed: () => presenter.statusFilter('missing'),
           ),
           Button(
-            width: buttonWidth,
-            onPressed: () => presenter.statusFilter('repeated'),
             style: filterSelected == 'repeated'
                 ? context.buttonStyles.yellowButton
                 : context.buttonStyles.primaryButton,
@@ -61,6 +59,8 @@ class StickerStatusFilter extends StatelessWidget {
                     .copyWith(color: context.appColors.primary)
                 : context.textStyles.textSecondaryFontMedium,
             label: 'Repetidas',
+            width: buttonWidth,
+            onPressed: () => presenter.statusFilter('repeated'),
           ),
         ],
       ),

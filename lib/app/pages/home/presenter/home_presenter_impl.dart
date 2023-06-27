@@ -4,7 +4,7 @@ import '../../../repositories/user/user_repository.dart';
 import '../view/home_view.dart';
 import 'home_presenter.dart';
 
-class HomePresenterImpl implements HomePresenter {
+final class HomePresenterImpl implements HomePresenter {
   final UserRepository _repository;
   late final HomeView _view;
 
@@ -32,4 +32,7 @@ class HomePresenterImpl implements HomePresenter {
 
   @override
   set view(HomeView view) => _view = view;
+
+  @override
+  HomeView get view => _view;
 }

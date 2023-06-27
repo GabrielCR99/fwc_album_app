@@ -7,7 +7,7 @@ import 'my_stickers_page.dart';
 import 'presenter/my_stickers_presenter.dart';
 import 'presenter/my_stickers_presenter_impl.dart';
 
-class MyStickersRoute extends FlutterGetItPageRoute {
+final class MyStickersRoute extends FlutterGetItPageRoute {
   const MyStickersRoute({super.key});
 
   @override

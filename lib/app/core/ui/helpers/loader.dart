@@ -10,11 +10,11 @@ mixin Loader<T extends StatefulWidget> on State<T> {
 
       showDialog<void>(
         context: context,
-        barrierDismissible: false,
         builder: (_) => LoadingAnimationWidget.threeArchedCircle(
           color: Colors.white,
           size: 80,
         ),
+        barrierDismissible: false,
       );
     }
   }

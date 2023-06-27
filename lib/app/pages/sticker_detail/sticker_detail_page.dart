@@ -19,7 +19,7 @@ class StickerDetailPage extends StatefulWidget {
 class _StickerDetailPageState extends StickerDetailViewImpl {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Detalhe Figurinha'), centerTitle: true),
@@ -62,26 +62,26 @@ class _StickerDetailPageState extends StickerDetailViewImpl {
                 ],
               ),
               Container(
-                padding: const EdgeInsets.only(left: 15, bottom: 10),
                 alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.only(left: 15, bottom: 10),
                 child: Text(
                   countryName,
                   style: context.textStyles.textPrimaryFontRegular,
                 ),
               ),
               Button.primary(
-                onPressed: widget.presenter.saveSticker,
                 label:
                     hasSticker ? 'Atualizar figurinha' : 'Adicionar figurinhas',
                 width: screenWidth * 0.9,
+                onPressed: widget.presenter.saveSticker,
               ),
               Button(
-                onPressed: widget.presenter.deleteSticker,
                 style: context.buttonStyles.primaryOutlineButton,
                 labelStyle:
                     context.textStyles.textSecondaryFontExtraBoldPrimaryColor,
                 label: 'Excluir figurinha',
                 width: screenWidth * 0.9,
+                onPressed: widget.presenter.deleteSticker,
                 outline: true,
               ),
             ],

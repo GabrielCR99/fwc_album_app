@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../ui/global/global_context.dart';
 
-class AuthInterceptor extends Interceptor {
+final class AuthInterceptor extends Interceptor {
   @override
   Future<void> onRequest(
     RequestOptions options,
@@ -20,7 +20,7 @@ class AuthInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.response?.statusCode == HttpStatus.unauthorized) {
       Injector.get<GlobalContext>().loginExpire();
     } else {

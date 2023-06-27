@@ -1,4 +1,4 @@
-class UserModel {
+final class UserModel {
   final String name;
   final String email;
   final int totalAlbum;
@@ -18,12 +18,12 @@ class UserModel {
   });
 
   factory UserModel.fromMap(Map<String, dynamic> map) => UserModel(
-        name: map['name'] ?? '',
-        email: map['email'] ?? '',
-        totalAlbum: map['total_album']?.toInt() ?? 0,
-        totalStickers: map['total_stickers']?.toInt() ?? 0,
-        totalDuplicates: map['total_duplicates']?.toInt() ?? 0,
-        totalComplete: map['total_complete']?.toInt() ?? 0,
-        totalCompletePercent: map['total_complete_percent']?.toInt() ?? 0,
+        name: (map['name'] ?? '') as String,
+        email: (map['email'] ?? '') as String,
+        totalAlbum: (map['total_album'] ?? 0) as int,
+        totalStickers: (map['total_stickers'] ?? 0) as int,
+        totalDuplicates: (map['total_duplicates'] ?? 0) as int,
+        totalComplete: (map['total_complete'] ?? 0) as int,
+        totalCompletePercent: (map['total_complete_percent'] ?? 0) as int,
       );
 }

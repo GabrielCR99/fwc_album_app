@@ -25,6 +25,21 @@ class _StickerGroupFilterState extends State<StickerGroupFilter> {
       padding: const EdgeInsets.all(8),
       child: SmartSelect<String>.multiple(
         title: 'Filtro',
+        placeholder: '',
+        selectedValue: selected ?? const [],
+        onChange: (selectedValue) => selectedValue.value.isEmpty
+            ? setState(() {
+                selected = const [];
+                presenter.countryFilter(widget.countries.keys.toList());
+              })
+            : _onChangeSelect(selectedValue, presenter),
+        choiceItems: S2Choice.listFrom(
+          source: widget.countries.entries
+              .map((e) => {'value': e.key, 'title': e.value})
+              .toList(),
+          value: (_, item) => item['value'] ?? '',
+          title: (_, item) => item['title'] ?? '',
+        ),
         tileBuilder: (_, state) => InkWell(
           onTap: state.showModal,
           child: _StickerGroupTile(
@@ -35,25 +50,10 @@ class _StickerGroupFilterState extends State<StickerGroupFilter> {
             }),
           ),
         ),
-        onChange: (selectedValue) => selectedValue.value.isEmpty
-            ? setState(() {
-                selected = const [];
-                presenter.countryFilter(widget.countries.keys.toList());
-              })
-            : _onChangeSelect(selectedValue, presenter),
-        selectedValue: selected ?? const [],
-        choiceItems: S2Choice.listFrom(
-          source: widget.countries.entries
-              .map((e) => {'value': e.key, 'title': e.value})
-              .toList(),
-          value: (_, item) => item['value'] ?? '',
-          title: (_, item) => item['title'] ?? '',
-        ),
         choiceType: S2ChoiceType.switches,
         choiceGrouped: true,
         modalType: S2ModalType.bottomSheet,
         modalFilter: false,
-        placeholder: '',
       ),
     );
   }
@@ -76,12 +76,12 @@ class _StickerGroupTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
         color: Color(0xFFF0F0F0),
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
+      width: MediaQuery.sizeOf(context).width,
+      margin: const EdgeInsets.all(10),
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
@@ -95,10 +95,7 @@ class _StickerGroupTile extends StatelessWidget {
                     .copyWith(fontSize: 11),
               ),
             ),
-            InkWell(
-              onTap: clearCallback,
-              child: const Icon(Icons.clear),
-            ),
+            InkWell(onTap: clearCallback, child: const Icon(Icons.clear)),
           ],
         ),
       ),

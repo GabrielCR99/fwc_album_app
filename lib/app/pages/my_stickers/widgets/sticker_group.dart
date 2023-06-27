@@ -40,7 +40,7 @@ class StickerGroup extends StatelessWidget {
                     placeholder: kTransparentImage,
                     image: group.flag,
                     imageCacheWidth:
-                        (MediaQuery.of(context).size.width * 3).toInt(),
+                        (MediaQuery.sizeOf(context).width * 3).toInt(),
                   ),
                 ),
               ),
@@ -54,27 +54,24 @@ class StickerGroup extends StatelessWidget {
             ),
           ),
           GridView.builder(
-            shrinkWrap: true,
-            itemCount: 20,
             physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
-              crossAxisSpacing: 10,
               mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
             ),
             itemBuilder: (_, index) {
               final stickerNumber = '${group.stickerStart + index}';
               final stickerList = group.stickers
                   .where((element) => element.stickerNumber == stickerNumber);
               final sticker = stickerList.isNotEmpty ? stickerList.first : null;
-
               final stickerWidget = _Sticker(
-                stickerNumber: stickerNumber,
                 sticker: sticker,
+                stickerNumber: stickerNumber,
                 countryName: group.countryName,
                 countryCode: group.countryCode,
               );
-
               if (statusFilter == 'all') {
                 return stickerWidget;
               } else if (statusFilter == 'missing') {
@@ -89,6 +86,7 @@ class StickerGroup extends StatelessWidget {
 
               return const Nil();
             },
+            itemCount: 20,
           ),
         ],
       ),
@@ -121,12 +119,12 @@ class _Sticker extends StatelessWidget {
           children: [
             Visibility(
               visible: (sticker?.duplicate ?? 0) > 0,
-              maintainSize: true,
-              maintainAnimation: true,
               maintainState: true,
+              maintainAnimation: true,
+              maintainSize: true,
               child: Container(
                 alignment: Alignment.topRight,
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                 child: Text(
                   '${sticker?.duplicate ?? ''}',
                   style: context.textStyles.textSecondaryFontMedium

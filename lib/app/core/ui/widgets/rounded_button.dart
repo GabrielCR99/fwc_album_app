@@ -15,10 +15,8 @@ class RoundedButton extends StatelessWidget {
       color: Colors.grey.withOpacity(0.2),
       shape: const CircleBorder(),
       child: DecoratedBox(
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-        ),
+        decoration:
+            const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
         child: IconButton(
           onPressed: onPressed,
           icon: Icon(icon, color: context.appColors.darkGrey),

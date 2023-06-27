@@ -7,7 +7,7 @@ import '../../core/rest/custom_dio.dart';
 import '../../models/user_model.dart';
 import 'user_repository.dart';
 
-class UserRepositoryImpl implements UserRepository {
+final class UserRepositoryImpl implements UserRepository {
   final CustomDio _dio;
 
   const UserRepositoryImpl({required CustomDio dio}) : _dio = dio;
@@ -15,10 +15,10 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<UserModel> getMe() async {
     try {
-      final result = await _dio.auth().get('/api/me');
+      final result = await _dio.auth().get<Map<String, dynamic>>('/api/me');
 
-      return UserModel.fromMap(result.data);
-    } on DioError catch (e, s) {
+      return UserModel.fromMap(result.data!);
+    } on DioException catch (e, s) {
       const errorMessage = 'Erro ao buscar usuário logado';
 
       log(errorMessage, error: e, stackTrace: s);

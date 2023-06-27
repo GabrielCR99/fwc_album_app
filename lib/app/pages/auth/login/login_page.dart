@@ -17,24 +17,16 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends LoginViewImpl {
+final class _LoginPageState extends LoginViewImpl {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.sizeOf(context);
 
     return Scaffold(
-      backgroundColor: context.appColors.primary,
       body: Form(
         key: _formKey,
         child: DecoratedBox(
@@ -64,11 +56,11 @@ class _LoginPageState extends LoginViewImpl {
                       ),
                     ),
                     TextFormField(
+                      controller: _emailController,
                       decoration: const InputDecoration(
                         label: Text('Email'),
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                       ),
-                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       validator: Validatorless.multiple([
                         Validatorless.required('Email requerido'),
@@ -77,11 +69,11 @@ class _LoginPageState extends LoginViewImpl {
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
+                      controller: _passwordController,
                       decoration: const InputDecoration(
                         label: Text('Senha'),
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                       ),
-                      controller: _passwordController,
                       obscureText: true,
                       validator: Validatorless.required('Senha obrigatória'),
                     ),
@@ -99,12 +91,12 @@ class _LoginPageState extends LoginViewImpl {
                     ),
                     const SizedBox(height: 25),
                     Button(
-                      onPressed: _onPressedLogin,
-                      width: screenSize.width * 0.9,
                       style: context.buttonStyles.yellowButton,
                       labelStyle: context
                           .textStyles.textSecondaryFontExtraBoldPrimaryColor,
                       label: 'Entrar',
+                      width: screenSize.width * 0.9,
+                      onPressed: _onPressedLogin,
                     ),
                   ]),
                 ),
@@ -125,7 +117,9 @@ class _LoginPageState extends LoginViewImpl {
                             TextSpan(
                               text: 'Cadastre-se',
                               style: context.textStyles.textSecondaryFontMedium
-                                  .copyWith(color: context.appColors.yellow),
+                                  .copyWith(
+                                color: context.appColors.yellow,
+                              ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => Navigator.of(context)
                                     .pushNamed('/auth/register'),
@@ -141,7 +135,15 @@ class _LoginPageState extends LoginViewImpl {
           ),
         ),
       ),
+      backgroundColor: context.appColors.primary,
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   void _onPressedLogin() {

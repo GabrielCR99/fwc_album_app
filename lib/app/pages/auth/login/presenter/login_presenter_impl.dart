@@ -5,7 +5,7 @@ import '../../../../services/login/login_service.dart';
 import '../view/login_view.dart';
 import 'login_presenter.dart';
 
-class LoginPresenterImpl implements LoginPresenter {
+final class LoginPresenterImpl implements LoginPresenter {
   final LoginService _loginService;
   late final LoginView _view;
 
@@ -28,4 +28,7 @@ class LoginPresenterImpl implements LoginPresenter {
 
   @override
   set view(LoginView view) => _view = view;
+
+  @override
+  LoginView get view => _view;
 }

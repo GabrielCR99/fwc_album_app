@@ -30,9 +30,6 @@ class FwcAlbumApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Fifa World Cup Album',
-        theme: ThemeConfig.theme,
-        debugShowCheckedModeBanner: false,
         navigatorKey: _navigatorKey,
         routes: {
           '/': (_) => const SplashRoute(),
@@ -42,6 +39,9 @@ class FwcAlbumApp extends StatelessWidget {
           '/my-stickers': (_) => const MyStickersRoute(),
           '/sticker-detail': (_) => const StickerDetailRoute(),
         },
+        title: 'Fifa World Cup Album',
+        theme: theme,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

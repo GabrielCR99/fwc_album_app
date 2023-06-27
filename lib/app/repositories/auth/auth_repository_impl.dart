@@ -9,7 +9,7 @@ import '../../core/rest/custom_dio.dart';
 import '../../models/register_user_model.dart';
 import 'auth_repository.dart';
 
-class AuthRepositoryImpl implements AuthRepository {
+final class AuthRepositoryImpl implements AuthRepository {
   final CustomDio _dio;
 
   const AuthRepositoryImpl({required CustomDio dio}) : _dio = dio;
@@ -20,7 +20,7 @@ class AuthRepositoryImpl implements AuthRepository {
     required String password,
   }) async {
     try {
-      final result = await _dio.unauth().post(
+      final result = await _dio.unauth().post<Map<String, dynamic>>(
         '/api/auth',
         data: {
           'email': email,
@@ -28,14 +28,14 @@ class AuthRepositoryImpl implements AuthRepository {
         },
       );
 
-      final acessToken = result.data['access_token'];
+      final acessToken = result.data!['access_token'] as String?;
 
       if (acessToken == null) {
         throw UnauthorizedException();
       }
 
       return acessToken;
-    } on DioError catch (e, s) {
+    } on DioException catch (e, s) {
       const errorMessage = 'Erro ao realizar login';
 
       log(errorMessage, error: e, stackTrace: s);
@@ -51,8 +51,8 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> logout() async {
     try {
-      await _dio.auth().post('/api/auth/logout');
-    } on DioError catch (e, s) {
+      await _dio.auth().post<void>('/api/auth/logout');
+    } on DioException catch (e, s) {
       const errorMesssage = 'Erro ao realizar logout';
       log(errorMesssage, error: e, stackTrace: s);
 
@@ -63,10 +63,12 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> register(RegisterUserModel registerModel) async {
     try {
-      await _dio.unauth().post('/api/register', data: registerModel.toMap());
-    } on DioError catch (e, s) {
-      final errorMesssage =
-          e.response?.data['error'] ?? 'Erro ao cadastrar usuário';
+      await _dio
+          .unauth()
+          .post<void>('/api/register', data: registerModel.toMap());
+    } on DioException catch (e, s) {
+      final errorMesssage = (e.response?.data as Map)['error'] as String? ??
+          'Erro ao cadastrar usuário';
       log(errorMesssage, error: e, stackTrace: s);
 
       Error.throwWithStackTrace(RepositoryException(errorMesssage), s);

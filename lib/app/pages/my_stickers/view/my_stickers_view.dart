@@ -1,6 +1,6 @@
 import '../../../models/group_stickers.dart';
 
-abstract class MyStickersView {
+abstract interface class MyStickersView {
   void loadedPage(List<GroupStickers> groupStickers);
   void error(String message);
   void updateStatusFilter(String status);

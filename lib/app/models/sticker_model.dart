@@ -1,4 +1,4 @@
-class StickerModel {
+final class StickerModel {
   final int id;
   final String stickerCode;
   final String stickerName;
@@ -14,10 +14,10 @@ class StickerModel {
   });
 
   factory StickerModel.fromMap(Map<String, dynamic> map) => StickerModel(
-        id: map['id']?.toInt() ?? 0,
-        stickerCode: map['sticker_code'] ?? '',
-        stickerName: map['sticker_name'] ?? '',
-        stickerNumber: map['sticker_number'] ?? '',
-        stickerImage: map['sticker_image'] ?? '',
+        id: (map['id'] ?? 0) as int,
+        stickerCode: (map['sticker_code'] ?? '') as String,
+        stickerName: (map['sticker_name'] ?? '') as String,
+        stickerNumber: (map['sticker_number'] ?? '') as String,
+        stickerImage: (map['sticker_image'] ?? '') as String,
       );
 }

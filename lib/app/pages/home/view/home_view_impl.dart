@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 
 import '../../../core/ui/helpers/loader.dart';
@@ -6,7 +8,7 @@ import '../../../models/user_model.dart';
 import '../home_page.dart';
 import 'home_view.dart';
 
-abstract class HomeViewImpl extends State<HomePage>
+abstract base class HomeViewImpl extends State<HomePage>
     with Loader<HomePage>, Messages<HomePage>
     implements HomeView {
   UserModel? user;
@@ -15,8 +17,7 @@ abstract class HomeViewImpl extends State<HomePage>
   void initState() {
     super.initState();
     widget.presenter.view = this;
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => widget.presenter.getUserData());
+    scheduleMicrotask(() => widget.presenter.getUserData());
   }
 
   @override

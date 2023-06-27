@@ -5,7 +5,7 @@ import 'presenter/splash_presenter.dart';
 import 'presenter/splash_presenter_impl.dart';
 import 'splash_page.dart';
 
-class SplashRoute extends FlutterGetItPageRoute {
+final class SplashRoute extends FlutterGetItPageRoute {
   const SplashRoute({super.key});
 
   @override

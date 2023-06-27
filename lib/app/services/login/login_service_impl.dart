@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../repositories/auth/auth_repository.dart';
 import 'login_service.dart';
 
-class LoginServiceImpl implements LoginService {
+final class LoginServiceImpl implements LoginService {
   final AuthRepository _authRepository;
 
   const LoginServiceImpl({required AuthRepository authRepository})
