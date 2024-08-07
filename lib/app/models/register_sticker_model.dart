@@ -19,7 +19,7 @@ final class RegisterStickerModel {
         stickerImageUpload: (map['sticker_image_upload'] ?? '') as String,
       );
 
-  Map<String, dynamic> toMap() => <String, dynamic>{
+  Map<String, dynamic> toMap() => {
         'sticker_name': stickerName,
         'sticker_code': stickerCode,
         'sticker_number': stickerNumber,

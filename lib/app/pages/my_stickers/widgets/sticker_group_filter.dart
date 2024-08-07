@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_awesome_select/flutter_awesome_select.dart';
+import 'package:flutter_awesome_select_clone/flutter_awesome_select.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 
 import '../../../core/ui/styles/text_styles.dart';
 import '../presenter/my_stickers_presenter.dart';
 
-class StickerGroupFilter extends StatefulWidget {
+final class StickerGroupFilter extends StatefulWidget {
   final Map<String, String> countries;
 
   const StickerGroupFilter({required this.countries, super.key});
@@ -14,7 +14,7 @@ class StickerGroupFilter extends StatefulWidget {
   State<StickerGroupFilter> createState() => _StickerGroupFilterState();
 }
 
-class _StickerGroupFilterState extends State<StickerGroupFilter> {
+final class _StickerGroupFilterState extends State<StickerGroupFilter> {
   List<String>? selected;
 
   @override
@@ -32,7 +32,7 @@ class _StickerGroupFilterState extends State<StickerGroupFilter> {
                 selected = const [];
                 presenter.countryFilter(widget.countries.keys.toList());
               })
-            : _onChangeSelect(selectedValue, presenter),
+            : _onChangeSelect(selectedValue),
         choiceItems: S2Choice.listFrom(
           source: widget.countries.entries
               .map((e) => {'value': e.key, 'title': e.value})
@@ -58,12 +58,9 @@ class _StickerGroupFilterState extends State<StickerGroupFilter> {
     );
   }
 
-  void _onChangeSelect(
-    S2MultiSelected<String> selectedValue,
-    MyStickersPresenter presenter,
-  ) {
+  void _onChangeSelect(S2MultiSelected<String> selectedValue) {
     setState(() => selected = selectedValue.value);
-    presenter.countryFilter(selected);
+    context.get<MyStickersPresenter>().countryFilter(selected);
   }
 }
 

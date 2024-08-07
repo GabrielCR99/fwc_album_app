@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/text_styles.dart';
 
-class StatusTile extends StatelessWidget {
+final class StatusTile extends StatelessWidget {
   final Image image;
   final String title;
   final int value;

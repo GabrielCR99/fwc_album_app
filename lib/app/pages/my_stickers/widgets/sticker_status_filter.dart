@@ -7,7 +7,7 @@ import '../../../core/ui/styles/text_styles.dart';
 import '../../../core/ui/widgets/button.dart';
 import '../presenter/my_stickers_presenter.dart';
 
-class StickerStatusFilter extends StatelessWidget {
+final class StickerStatusFilter extends StatelessWidget {
   final String filterSelected;
 
   const StickerStatusFilter({required this.filterSelected, super.key});

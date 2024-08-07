@@ -23,6 +23,6 @@ abstract base class LoginViewImpl extends State<LoginPage>
   @override
   void onLoginSuccess() {
     hideLoader();
-    Navigator.of(context).pushNamedAndRemoveUntil('/home', (_) => false);
+    Navigator.of(context).pushNamedAndRemoveUntil<void>('/home', (_) => false);
   }
 }

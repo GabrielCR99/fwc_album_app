@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/widgets.dart';
 
 import '../../../core/ui/helpers/loader.dart';
@@ -19,7 +17,7 @@ abstract base class MyStickersViewImpl extends State<MyStickersPage>
   void initState() {
     super.initState();
     widget.presenter.view = this;
-    scheduleMicrotask(() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       showLoader();
       widget.presenter.getMyAlbum();
     });

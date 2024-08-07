@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../styles/app_colors.dart';
 
-class RoundedButton extends StatelessWidget {
+final class RoundedButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onPressed;
 

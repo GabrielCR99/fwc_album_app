@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../styles/button_styles.dart';
 import '../styles/text_styles.dart';
 
-class Button extends StatelessWidget {
+final class Button extends StatelessWidget {
   final ButtonStyle style;
   final TextStyle labelStyle;
   final String label;

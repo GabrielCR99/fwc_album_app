@@ -7,7 +7,7 @@ import 'my_stickers_page.dart';
 import 'presenter/my_stickers_presenter.dart';
 import 'presenter/my_stickers_presenter_impl.dart';
 
-final class MyStickersRoute extends FlutterGetItPageRoute {
+final class MyStickersRoute extends FlutterGetItPageRouter {
   const MyStickersRoute({super.key});
 
   @override
@@ -21,6 +21,9 @@ final class MyStickersRoute extends FlutterGetItPageRoute {
       ];
 
   @override
-  WidgetBuilder get page =>
+  WidgetBuilder get view =>
       (context) => MyStickersPage(presenter: context.get());
+
+  @override
+  String get routeName => '/my-stickers';
 }

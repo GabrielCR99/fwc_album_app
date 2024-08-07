@@ -3,7 +3,7 @@ import '../../../repositories/stickers/stickers_repository.dart';
 import '../view/my_stickers_view.dart';
 import 'my_stickers_presenter.dart';
 
-class MyStickersPresenterImpl implements MyStickersPresenter {
+final class MyStickersPresenterImpl implements MyStickersPresenter {
   var album = <GroupStickers>[];
   var selectedStatus = 'all';
   List<String>? countries;

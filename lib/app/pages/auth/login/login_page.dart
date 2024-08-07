@@ -122,7 +122,7 @@ final class _LoginPageState extends LoginViewImpl {
                               ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => Navigator.of(context)
-                                    .pushNamed('/auth/register'),
+                                    .pushNamed<void>('/auth/register'),
                             ),
                           ],
                         ),
@@ -136,6 +136,7 @@ final class _LoginPageState extends LoginViewImpl {
         ),
       ),
       backgroundColor: context.appColors.primary,
+      resizeToAvoidBottomInset: false,
     );
   }
 

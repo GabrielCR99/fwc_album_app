@@ -10,9 +10,9 @@ import '../../models/register_user_model.dart';
 import 'auth_repository.dart';
 
 final class AuthRepositoryImpl implements AuthRepository {
-  final CustomDio _dio;
+  final CustomDio dio;
 
-  const AuthRepositoryImpl({required CustomDio dio}) : _dio = dio;
+  const AuthRepositoryImpl({required this.dio});
 
   @override
   Future<String> login({
@@ -20,7 +20,7 @@ final class AuthRepositoryImpl implements AuthRepository {
     required String password,
   }) async {
     try {
-      final result = await _dio.unauth().post<Map<String, dynamic>>(
+      final result = await dio.unauth().post<Map<String, dynamic>>(
         '/api/auth',
         data: {
           'email': email,
@@ -51,7 +51,7 @@ final class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> logout() async {
     try {
-      await _dio.auth().post<void>('/api/auth/logout');
+      await dio.auth().post<void>('/api/auth/logout');
     } on DioException catch (e, s) {
       const errorMesssage = 'Erro ao realizar logout';
       log(errorMesssage, error: e, stackTrace: s);
@@ -63,11 +63,11 @@ final class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> register(RegisterUserModel registerModel) async {
     try {
-      await _dio
+      await dio
           .unauth()
           .post<void>('/api/register', data: registerModel.toMap());
     } on DioException catch (e, s) {
-      final errorMesssage = (e.response?.data as Map)['error'] as String? ??
+      final errorMesssage = (e.response?.data as Map?)?['error'] as String? ??
           'Erro ao cadastrar usuário';
       log(errorMesssage, error: e, stackTrace: s);
 

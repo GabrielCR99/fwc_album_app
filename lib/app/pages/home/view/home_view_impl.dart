@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/widgets.dart';
 
 import '../../../core/ui/helpers/loader.dart';
@@ -17,7 +15,8 @@ abstract base class HomeViewImpl extends State<HomePage>
   void initState() {
     super.initState();
     widget.presenter.view = this;
-    scheduleMicrotask(() => widget.presenter.getUserData());
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => widget.presenter.getUserData());
   }
 
   @override
@@ -34,7 +33,8 @@ abstract base class HomeViewImpl extends State<HomePage>
   @override
   void onSuccessLogout() {
     hideLoader();
-    Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (_) => false);
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil<void>('/auth/login', (_) => false);
   }
 
   @override

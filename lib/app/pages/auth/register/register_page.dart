@@ -6,7 +6,7 @@ import '../../../core/ui/widgets/button.dart';
 import 'presenter/register_presenter.dart';
 import 'view/register_view_impl.dart';
 
-class RegisterPage extends StatefulWidget {
+final class RegisterPage extends StatefulWidget {
   final RegisterPresenter presenter;
 
   const RegisterPage({required this.presenter, super.key});

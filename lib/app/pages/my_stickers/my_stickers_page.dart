@@ -6,7 +6,7 @@ import 'widgets/sticker_group.dart';
 import 'widgets/sticker_group_filter.dart';
 import 'widgets/sticker_status_filter.dart';
 
-class MyStickersPage extends StatefulWidget {
+final class MyStickersPage extends StatefulWidget {
   final MyStickersPresenter presenter;
 
   const MyStickersPage({required this.presenter, super.key});

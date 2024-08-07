@@ -10,7 +10,7 @@ import 'view/home_view_impl.dart';
 import 'widgets/percent_widget.dart';
 import 'widgets/status_tile.dart';
 
-class HomePage extends StatefulWidget {
+final class HomePage extends StatefulWidget {
   final HomePresenter presenter;
 
   const HomePage({required this.presenter, super.key});
@@ -41,10 +41,10 @@ final class _HomePageState extends HomeViewImpl {
           ),
         ),
         child: LayoutBuilder(
-          builder: (_, constraints) => ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: Center(
-              child: SingleChildScrollView(
+          builder: (_, constraints) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Center(
                 child: Column(
                   children: [
                     Container(
@@ -102,7 +102,7 @@ final class _HomePageState extends HomeViewImpl {
   Future<void> _goToMyStickers(BuildContext context) async {
     final presenter = context.get<HomePresenter>();
 
-    await Navigator.of(context).pushNamed('/my-stickers');
+    await Navigator.of(context).pushNamed<void>('/my-stickers');
 
     presenter.getUserData();
   }

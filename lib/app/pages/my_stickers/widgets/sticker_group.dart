@@ -9,7 +9,7 @@ import '../../../models/group_stickers.dart';
 import '../../../models/user_sticker_model.dart';
 import '../presenter/my_stickers_presenter.dart';
 
-class StickerGroup extends StatelessWidget {
+final class StickerGroup extends StatelessWidget {
   final GroupStickers group;
   final String statusFilter;
 
@@ -152,7 +152,7 @@ class _Sticker extends StatelessWidget {
 
   Future<void> _goToStickerDetail(BuildContext context) async {
     final presenter = context.get<MyStickersPresenter>();
-    await Navigator.of(context).pushNamed(
+    await Navigator.of(context).pushNamed<void>(
       '/sticker-detail',
       arguments: {
         'countryCode': countryCode,

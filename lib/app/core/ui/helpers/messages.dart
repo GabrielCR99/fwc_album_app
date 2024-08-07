@@ -4,7 +4,7 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../styles/app_colors.dart';
 
-mixin Messages<T extends StatefulWidget> on State<T> {
+base mixin Messages<T extends StatefulWidget> on State<T> {
   late final _overlay = Navigator.of(context).overlay!;
 
   void showSuccess(String message) =>

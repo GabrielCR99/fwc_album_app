@@ -24,5 +24,5 @@ abstract base class SplashViewImpl extends State<SplashPage>
   }
 
   void _navigateTo(String route) =>
-      Navigator.of(context).pushNamedAndRemoveUntil(route, (_) => false);
+      Navigator.of(context).pushNamedAndRemoveUntil<void>(route, (_) => false);
 }

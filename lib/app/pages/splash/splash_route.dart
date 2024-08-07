@@ -5,7 +5,7 @@ import 'presenter/splash_presenter.dart';
 import 'presenter/splash_presenter_impl.dart';
 import 'splash_page.dart';
 
-final class SplashRoute extends FlutterGetItPageRoute {
+final class SplashRoute extends FlutterGetItPageRouter {
   const SplashRoute({super.key});
 
   @override
@@ -14,5 +14,8 @@ final class SplashRoute extends FlutterGetItPageRoute {
       ];
 
   @override
-  WidgetBuilder get page => (context) => SplashPage(presenter: context.get());
+  WidgetBuilder get view => (context) => SplashPage(presenter: context.get());
+
+  @override
+  String get routeName => '/';
 }

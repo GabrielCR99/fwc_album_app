@@ -4,14 +4,13 @@ import '../../repositories/stickers/stickers_repository.dart';
 import 'find_sticker_service.dart';
 
 final class FindSticerServiceImpl implements FindStickerService {
-  final StickersRepository _stickersRepository;
+  final StickersRepository stickersRepository;
 
-  const FindSticerServiceImpl({required StickersRepository stickersRepository})
-      : _stickersRepository = stickersRepository;
+  const FindSticerServiceImpl({required this.stickersRepository});
 
   @override
   Future<StickerModel> execute(String code, String number) async {
-    var sticker = await _stickersRepository.findStickerByCode(code, number);
+    var sticker = await stickersRepository.findStickerByCode(code, number);
 
     if (sticker == null) {
       final registerSticker = RegisterStickerModel(
@@ -21,7 +20,7 @@ final class FindSticerServiceImpl implements FindStickerService {
         stickerImageUpload: '',
       );
 
-      sticker = await _stickersRepository.create(registerSticker);
+      sticker = await stickersRepository.create(registerSticker);
     }
 
     return sticker;

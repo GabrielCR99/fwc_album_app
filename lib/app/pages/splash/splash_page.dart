@@ -7,7 +7,7 @@ import '../../core/ui/widgets/button.dart';
 import 'presenter/splash_presenter.dart';
 import 'view/splash_view_impl.dart';
 
-class SplashPage extends StatefulWidget {
+final class SplashPage extends StatefulWidget {
   final SplashPresenter presenter;
 
   const SplashPage({required this.presenter, super.key});

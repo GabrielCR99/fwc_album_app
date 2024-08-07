@@ -5,8 +5,7 @@ import 'core/rest/custom_dio.dart';
 import 'core/ui/global/global_context.dart';
 import 'core/ui/global/global_context_impl.dart';
 import 'core/ui/theme/theme_config.dart';
-import 'pages/auth/login/login_route.dart';
-import 'pages/auth/register/register_route.dart';
+import 'pages/auth/auth_module.dart';
 import 'pages/home/home_route.dart';
 import 'pages/my_stickers/my_stickers_route.dart';
 import 'pages/splash/splash_route.dart';
@@ -21,28 +20,30 @@ class FwcAlbumApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlutterGetItApplicationBinding(
-      bindingsBuilder: () => [
-        Bind.lazySingleton((_) => CustomDio()),
-        Bind.lazySingleton<AuthRepository>((i) => AuthRepositoryImpl(dio: i())),
-        Bind.lazySingleton<GlobalContext>(
-          (_) => GlobalContextImpl(navigatorKey: _navigatorKey),
-        ),
-      ],
-      child: MaterialApp(
+    return FlutterGetIt(
+      builder: (_, routes, ___) => MaterialApp(
         navigatorKey: _navigatorKey,
-        routes: {
-          '/': (_) => const SplashRoute(),
-          '/auth/login': (_) => const LoginRoute(),
-          '/auth/register': (_) => const RegisterRoute(),
-          '/home': (_) => const HomeRoute(),
-          '/my-stickers': (_) => const MyStickersRoute(),
-          '/sticker-detail': (_) => const StickerDetailRoute(),
-        },
+        routes: routes,
         title: 'Fifa World Cup Album',
         theme: theme,
         debugShowCheckedModeBanner: false,
       ),
+      bindingsBuilder: () => [
+        Bind.lazySingleton((_) => CustomDio()),
+        Bind.lazySingleton<AuthRepository>(
+          (i) => AuthRepositoryImpl(dio: i()),
+        ),
+        Bind.lazySingleton<GlobalContext>(
+          (_) => GlobalContextImpl(navigatorKey: _navigatorKey),
+        ),
+      ],
+      modules: [AuthModule()],
+      pages: const [
+        StickerDetailRoute(),
+        SplashRoute(),
+        HomeRoute(),
+        MyStickersRoute(),
+      ],
     );
   }
 }

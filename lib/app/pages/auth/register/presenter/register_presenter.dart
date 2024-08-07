@@ -1,7 +1,8 @@
 import '../../../../core/mvp/fwc_presenter.dart';
 import '../view/register_view.dart';
 
-abstract class RegisterPresenter implements FwcPresenter<RegisterView> {
+abstract interface class RegisterPresenter
+    implements FwcPresenter<RegisterView> {
   Future<void> register({
     required String name,
     required String email,

@@ -1,4 +1,4 @@
-abstract class StickerDetailView {
+abstract interface class StickerDetailView {
   void screenLoaded(
     String countryCode,
     String stickerNumber,

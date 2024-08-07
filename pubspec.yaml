@@ -6,23 +6,23 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.0.5
+  sdk: ^3.5.0
 
 dependencies:
-  dio: ^5.2.1+1
+  dio: ^5.5.0
   flutter:
     sdk: flutter
-  flutter_awesome_select: ^6.5.0
+  flutter_awesome_select_clone: ^7.5.0
   flutter_dotenv: ^5.1.0
-  flutter_getit: ^1.2.1
-  loading_animation_widget: ^1.2.0+4
-  shared_preferences: ^2.1.2
-  top_snackbar_flutter: ^3.0.0+1
+  flutter_getit: ^2.0.0
+  loading_animation_widget: ^1.2.1
+  shared_preferences: ^2.3.1
+  top_snackbar_flutter: ^3.1.0
   transparent_image: ^2.0.1
   validatorless: ^1.2.3
 
 dev_dependencies:
-  dart_code_metrics: ^5.7.5
+  dart_code_metrics: ^5.7.6
   flutter_test:
     sdk: flutter
 

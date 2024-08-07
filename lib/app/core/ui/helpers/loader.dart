@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-mixin Loader<T extends StatefulWidget> on State<T> {
+base mixin Loader<T extends StatefulWidget> on State<T> {
   var _isOpen = false;
 
   void showLoader() {
@@ -22,7 +22,7 @@ mixin Loader<T extends StatefulWidget> on State<T> {
   void hideLoader() {
     if (_isOpen) {
       _isOpen = false;
-      Navigator.of(context).pop();
+      Navigator.of(context).pop<void>();
     }
   }
 }

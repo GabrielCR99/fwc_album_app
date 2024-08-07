@@ -11,14 +11,14 @@ import '../../models/sticker_model.dart';
 import 'stickers_repository.dart';
 
 final class StickersRepositoryImpl implements StickersRepository {
-  final CustomDio _dio;
+  final CustomDio dio;
 
-  const StickersRepositoryImpl({required CustomDio dio}) : _dio = dio;
+  const StickersRepositoryImpl({required this.dio});
 
   @override
   Future<List<GroupStickers>> getMyAlbum() async {
     try {
-      final result = await _dio.get<List<Object?>>('/api/countries');
+      final result = await dio.get<List<Object?>>('/api/countries');
 
       return result.data!
           .cast<Map<String, dynamic>>()
@@ -37,7 +37,7 @@ final class StickersRepositoryImpl implements StickersRepository {
   @override
   Future<StickerModel?> findStickerByCode(String code, String number) async {
     try {
-      final result = await _dio.auth().get<Map<String, dynamic>>(
+      final result = await dio.auth().get<Map<String, dynamic>>(
         '/api/sticker-search',
         queryParameters: {
           'sticker_code': code,
@@ -64,7 +64,7 @@ final class StickersRepositoryImpl implements StickersRepository {
     try {
       final body = FormData.fromMap({...registerStickerModel.toMap()});
 
-      final result = await _dio
+      final result = await dio
           .auth()
           .post<Map<String, dynamic>>('/api/sticker', data: body);
 
@@ -81,7 +81,7 @@ final class StickersRepositoryImpl implements StickersRepository {
   @override
   Future<void> registerUserSticker(int stickerId, int amount) async {
     try {
-      await _dio.auth().post<void>(
+      await dio.auth().post<void>(
         '/api/user/sticker',
         data: {'id_sticker': stickerId, 'amount': amount},
       );
@@ -97,7 +97,7 @@ final class StickersRepositoryImpl implements StickersRepository {
   @override
   Future<void> updateUserSticker(int stickerId, int amount) async {
     try {
-      await _dio.auth().put<void>(
+      await dio.auth().put<void>(
         '/api/user/sticker',
         data: {'id_sticker': stickerId, 'amount': amount},
       );

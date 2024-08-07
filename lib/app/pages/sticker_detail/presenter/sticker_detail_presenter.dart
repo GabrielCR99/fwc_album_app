@@ -2,7 +2,7 @@ import '../../../core/mvp/fwc_presenter.dart';
 import '../../../models/user_sticker_model.dart';
 import '../view/sticker_detail_view.dart';
 
-abstract class StickerDetailPresenter
+abstract interface class StickerDetailPresenter
     implements FwcPresenter<StickerDetailView> {
   Future<void> load({
     required String countryCode,

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../core/ui/styles/app_colors.dart';
 import '../../../core/ui/styles/text_styles.dart';
 
-class PercentWidget extends StatelessWidget {
+final class PercentWidget extends StatelessWidget {
   final int percent;
 
   const PercentWidget({required this.percent, super.key});

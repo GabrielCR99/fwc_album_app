@@ -7,7 +7,7 @@ import 'home_page.dart';
 import 'presenter/home_presenter.dart';
 import 'presenter/home_presenter_impl.dart';
 
-final class HomeRoute extends FlutterGetItPageRoute {
+final class HomeRoute extends FlutterGetItPageRouter {
   const HomeRoute({super.key});
 
   @override
@@ -17,6 +17,10 @@ final class HomeRoute extends FlutterGetItPageRoute {
           (i) => HomePresenterImpl(repository: i()),
         ),
       ];
+
   @override
-  WidgetBuilder get page => (context) => HomePage(presenter: context.get());
+  WidgetBuilder get view => (context) => HomePage(presenter: context.get());
+
+  @override
+  String get routeName => '/home';
 }

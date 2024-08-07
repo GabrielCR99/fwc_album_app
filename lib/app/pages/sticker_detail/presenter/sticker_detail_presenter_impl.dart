@@ -6,7 +6,7 @@ import '../../../services/sticker/find_sticker_service.dart';
 import '../view/sticker_detail_view.dart';
 import 'sticker_detail_presenter.dart';
 
-class StickerDetailPresenterImpl implements StickerDetailPresenter {
+final class StickerDetailPresenterImpl implements StickerDetailPresenter {
   int amount = 0;
   late final StickerDetailView _view;
   final FindStickerService _findStickerService;
